@@ -1,3 +1,7 @@
+// Name: Andrea Morales Villegas
+// Modification Title:
+// Time Completion:
+
 let config = {
     type: Phaser.AUTO,
     width: 640,
