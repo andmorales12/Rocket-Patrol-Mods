@@ -5,7 +5,7 @@ class Play extends Phaser.Scene {
 
     create() {
         // place tile sprite
-        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0)
+        this.starfield = this.add.tileSprite(0, 0, 640, 480, 'sky').setOrigin(0, 0)
 
         // green UI background
         this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0)
@@ -24,7 +24,7 @@ class Play extends Phaser.Scene {
         this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0, 0)
 
         // add smaller enemy spaceship
-        this.ship04 = new Spaceship(this, game.config.width, borderUISize*3 + borderPadding*5, 'enemyship', 0, 0).setOrigin(0, 0)
+        this.ship04 = new Enemyship(this, game.config.width, borderUISize*7 + borderPadding*6, 'enemyship', 0, 40).setOrigin(0, 0)
 
         // define keys
         keyFIRE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
@@ -76,7 +76,7 @@ class Play extends Phaser.Scene {
 
         if(!this.gameOver) {
             this.p1Rocket.update()
-            this.ship01.update() // update the spaceships (x3)
+            this.ship01.update() // update the spaceships (x4)
             this.ship02.update()
             this.ship03.update()
             this.ship04.update()
