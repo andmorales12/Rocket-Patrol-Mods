@@ -9,6 +9,7 @@ class Menu extends Phaser.Scene {
         this.load.image('spaceship', './assets/spaceship.png')
         this.load.image('enemyship', './assets/enemyship.png') 
         this.load.image('sky', './assets/sky.png')
+        this.load.image('background', './assets/background.png')
         
 
         // load spritesheet
@@ -31,6 +32,9 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        // adding background image
+        this.add.image(0, 0, 'background').setOrigin(0, 0).setDisplaySize(game.config.width, game.config.height);
+
         // animation configuration
         this.anims.create({
             key: 'explode',
@@ -42,11 +46,11 @@ class Menu extends Phaser.Scene {
             frameRate: 30
         })
 
-        let menuConfig = {
+        let menuConfig2 = {
             fontFamily: 'Pixelify Sans',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            fontSize: '36px',
+            backgroundColor: '#DC0423',
+            color: '#4B0610',
             align: 'right',
             padding: {
                 top: 5,
@@ -54,11 +58,25 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+
+        let menuConfig = {
+            fontFamily: 'Pixelify Sans',
+            fontSize: '26px',
+            //backgroundColor: '#FFFFFF',
+            color: '#FFFFFF',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+
         // display menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5)
+        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig2).setOrigin(0.5)
         this.add.text(game.config.width/2, game.config.height/2, 'Use ← → arrows to move & (F) to fire', menuConfig).setOrigin(0.5)
-        menuConfig.backgroundColor = '#00FF00'
-        menuConfig.color = '#000'
+        //menuConfig.backgroundColor = '#00FF00'
+        menuConfig.color = '#FFFFFF'
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5)
 
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)

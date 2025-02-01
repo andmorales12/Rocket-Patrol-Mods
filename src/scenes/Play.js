@@ -159,3 +159,5 @@ class Play extends Phaser.Scene {
 
 // works cited: 
 // https://youtu.be/156GXOSjJ4g?si=X5ebMaFNU3dDjABh - referenced for mouse movement
+// sfxs: roommate & myself
+// menu image: atrellon3 space background: https://www.reddit.com/r/PixelArt/comments/f1wg26/space_background/
