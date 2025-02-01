@@ -23,6 +23,27 @@ class Rocket extends Phaser.GameObjects.Sprite {
             this.isFiring = true
             this.sfxShot.play()
         }
+
+        // Fire with "F" key
+        if (Phaser.Input.Keyboard.JustDown(keyFIRE) && !this.isFiring) {
+            this.isFiring = true;
+            this.sfxShot.play();
+        }
+        
+        // Fire with left mouse click
+        if (this.scene.input.activePointer.isDown && !this.isFiring) {
+            this.isFiring = true;
+            this.sfxShot.play();
+        }
+
+        // Move with mouse (if not firing)
+        if (!this.isFiring) {
+            let xMouse = this.scene.input.activePointer.x; // Get current mouse position
+            if (xMouse >= borderUISize + this.width && xMouse <= game.config.width - borderUISize - this.width) {
+                this.x = xMouse;
+            }
+        }
+
         // if fired, move up
         if(this.isFiring && this.y >= borderUISize * 3 + borderPadding) {
             this.y -= this.moveSpeed
