@@ -32,16 +32,6 @@ class Play extends Phaser.Scene {
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT)
 
-        // defining mouse input
-        // this.input.on('pointermove', (pointer) => {
-        //     this.p1Rocket.x = Phaser.Math.Clamp(pointer.x, borderUISize + this.p1Rocket.width, game.config.width - borderUISize - this.p1Rocket.width)
-        // })
-
-        // this.input.on('pointerdown', (pointer) => {
-        //     if (!this.p1Rocket.isFiring) {
-        //         this.p1Rocket.fire();
-        //     }
-        // });
 
         // initialize score
         this.p1Score = 0
@@ -154,11 +144,16 @@ class Play extends Phaser.Scene {
             boom.destroy()                    // remove explosion sprite
         })
 
+        // randomize explosion sfxs
+        let explosionSounds = ['sfx-explosion', 'boooom', 'pagh', 'pcoo', 'pshew'];
+        let randomSound = Phaser.Utils.Array.GetRandom(explosionSounds); // Pick a random sound
+        this.sound.play(randomSound);
+
         // score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score
 
-        this.sound.play('sfx-explosion')
+        //this.sound.play('sfx-explosion')
     }
 }
 
